@@ -1,0 +1,6 @@
+{
+  "name": "Equine Genetics & Coat Color Calculator",
+  "description": "Interactive horse coat color genetics calculator and educational guide simulating Punnett squares, allele inheritance, dilutions, and breeding pair probabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
