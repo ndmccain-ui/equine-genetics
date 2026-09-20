@@ -26,6 +26,11 @@ export interface HorseGenotype {
 
 export type BaseColorCategory = 'chestnut' | 'bay' | 'black';
 
+export type FacialMarking = 'none' | 'star' | 'strip' | 'star-strip' | 'blaze' | 'snip' | 'bald';
+export type LegMarking = 'none' | 'coronet' | 'pastern' | 'sock' | 'stocking';
+export type ManeStyle = 'flowing' | 'sport' | 'roached';
+export type AppaloosaPattern = 'none' | 'blanket' | 'leopard' | 'fewspot';
+
 export interface HorsePhenotype {
   name: string;
   category: BaseColorCategory;
@@ -43,6 +48,14 @@ export interface HorsePhenotype {
   isLethalWhite: boolean;     // O/O homozygous lethal white overo syndrome
   rarity?: 'common' | 'uncommon' | 'rare' | 'very_rare' | 'lethal';
   scientificFormula: string;  // e.g. "ee A_ Cr/N dd zz chch gg rnrn to/to"
+
+  // Visual & Anatomical Customizations
+  facialMarking?: FacialMarking;
+  frontLegMarking?: LegMarking;
+  hindLegMarking?: LegMarking;
+  maneStyle?: ManeStyle;
+  appaloosaPattern?: AppaloosaPattern;
+  hasSplashWhite?: boolean;
 }
 
 export interface OffspringProbability {
@@ -74,6 +87,15 @@ export interface HorsePreset {
   tagline: string;
   genotype: HorseGenotype;
   iconColor: string;
+  facialMarking?: FacialMarking;
+  frontLegMarking?: LegMarking;
+  hindLegMarking?: LegMarking;
+  maneStyle?: ManeStyle;
+  appaloosaPattern?: AppaloosaPattern;
+  hasSplashWhite?: boolean;
+  registryHistory?: string;
+  origin?: string;
+  foundationTraits?: string[];
 }
 
 export interface PunnettCell {

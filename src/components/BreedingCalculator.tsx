@@ -70,43 +70,43 @@ export const BreedingCalculator: React.FC = () => {
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => handleLoadPairing('classic-buckskin', 'golden-palomino')}
+            onClick={() => handleLoadPairing('quarter-horse-palomino', 'thoroughbred-bay')}
             className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
           >
             <span className="w-2 h-2 rounded-full bg-amber-400 border border-stone-400" />
-            Buckskin × Palomino (Cream Segregation)
+            Palomino × Bay (Cream Segregation)
           </button>
           <button
             type="button"
-            onClick={() => handleLoadPairing('classic-bay', 'classic-bay')}
-            className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
-          >
-            <span className="w-2 h-2 rounded-full bg-amber-800 border border-stone-400" />
-            Heterozygous Bay × Bay (Extension / Agouti)
-          </button>
-          <button
-            type="button"
-            onClick={() => handleLoadPairing('frame-overo-carrier', 'frame-overo-carrier')}
+            onClick={() => handleLoadPairing('paint-frame-overo', 'paint-frame-overo')}
             className="px-3 py-1.5 rounded-sm bg-red-50 hover:bg-red-100 border border-red-300 text-[11px] uppercase tracking-wider font-semibold text-red-900 transition-colors flex items-center gap-1.5"
           >
             <AlertTriangle className="w-3.5 h-3.5 text-red-700" />
-            Frame Overo × Frame Overo (Lethal White Risk)
+            Frame Overo × Frame Overo (25% Lethal White Risk)
           </button>
           <button
             type="button"
-            onClick={() => handleLoadPairing('grullo', 'flaxen-sorrel')}
+            onClick={() => handleLoadPairing('norwegian-fjord', 'haflinger-sorrel')}
             className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
           >
-            <span className="w-2 h-2 rounded-full bg-stone-600 border border-stone-400" />
-            Grullo × Flaxen Sorrel (Dun + Modifiers)
+            <span className="w-2 h-2 rounded-full bg-amber-600 border border-stone-400" />
+            Fjord (Dun) × Haflinger (Flaxen Sorrel)
           </button>
           <button
             type="button"
-            onClick={() => handleLoadPairing('tobiano-paint', 'friesian-black')}
+            onClick={() => handleLoadPairing('gypsy-vanner', 'friesian-black')}
             className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
           >
             <span className="w-2 h-2 rounded-full bg-stone-900 border border-stone-400" />
-            Homozygous Tobiano × Black (100% Pinto)
+            Gypsy Vanner (TO/TO) × Friesian (100% Pinto)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleLoadPairing('arabian-grey', 'thoroughbred-bay')}
+            className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
+          >
+            <span className="w-2 h-2 rounded-full bg-slate-400 border border-stone-400" />
+            Arabian (Grey Gg) × Thoroughbred (50% Greying)
           </button>
         </div>
       </div>

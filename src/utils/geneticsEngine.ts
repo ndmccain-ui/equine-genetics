@@ -11,7 +11,10 @@ import {
 /**
  * Resolves full phenotype from a horse's complete genotype.
  */
-export function resolvePhenotype(genotype: HorseGenotype): HorsePhenotype {
+export function resolvePhenotype(
+  genotype: HorseGenotype,
+  customization?: Partial<Pick<HorsePhenotype, 'facialMarking' | 'frontLegMarking' | 'hindLegMarking' | 'maneStyle' | 'appaloosaPattern' | 'hasSplashWhite'>>
+): HorsePhenotype {
   const {
     extension,
     agouti,
@@ -291,6 +294,12 @@ export function resolvePhenotype(genotype: HorseGenotype): HorsePhenotype {
     isLethalWhite: false,
     rarity: getRarityLevel(crCount, hasDun, hasSilver, hasChampagne, hasGrey, hasRoan, hasTobiano, hasFrameOvero),
     scientificFormula: formatGenotypeFormula(genotype),
+    facialMarking: customization?.facialMarking || 'none',
+    frontLegMarking: customization?.frontLegMarking || 'none',
+    hindLegMarking: customization?.hindLegMarking || 'none',
+    maneStyle: customization?.maneStyle || 'flowing',
+    appaloosaPattern: customization?.appaloosaPattern || 'none',
+    hasSplashWhite: customization?.hasSplashWhite || false,
   };
 }
 
