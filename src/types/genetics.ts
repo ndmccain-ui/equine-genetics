@@ -9,6 +9,7 @@ export type RoanAllele = 'Rn' | 'rn';
 export type TobianoAllele = 'TO' | 'to';
 export type FrameOveroAllele = 'O' | 'o';
 export type FlaxenAllele = 'F' | 'f';
+export type LeopardAllele = 'LP' | 'lp';
 
 export interface HorseGenotype {
   extension: [ExtensionAllele, ExtensionAllele]; // E/E, E/e, e/e
@@ -22,6 +23,7 @@ export interface HorseGenotype {
   tobiano: [TobianoAllele, TobianoAllele];       // TO/TO, TO/to, to/to
   frameOvero: [FrameOveroAllele, FrameOveroAllele]; // O/O (Lethal), O/o, o/o
   flaxen: [FlaxenAllele, FlaxenAllele];          // F/F, F/f, f/f
+  leopardComplex: [LeopardAllele, LeopardAllele]; // LP/LP, LP/lp, lp/lp
 }
 
 export type BaseColorCategory = 'chestnut' | 'bay' | 'black';
@@ -29,7 +31,7 @@ export type BaseColorCategory = 'chestnut' | 'bay' | 'black';
 export type FacialMarking = 'none' | 'star' | 'strip' | 'star-strip' | 'blaze' | 'snip' | 'bald';
 export type LegMarking = 'none' | 'coronet' | 'pastern' | 'sock' | 'stocking';
 export type ManeStyle = 'flowing' | 'sport' | 'roached';
-export type AppaloosaPattern = 'none' | 'blanket' | 'leopard' | 'fewspot';
+export type AppaloosaPattern = 'none' | 'blanket' | 'leopard' | 'fewspot' | 'snowflake';
 
 export interface HorsePhenotype {
   name: string;

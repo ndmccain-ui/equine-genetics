@@ -33,6 +33,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -61,6 +62,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['f', 'f'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -89,6 +91,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -117,6 +120,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -145,6 +149,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['LP', 'lp'],
     },
   },
   {
@@ -173,6 +178,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['TO', 'TO'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -201,6 +207,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -229,6 +236,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -258,6 +266,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['O', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -286,6 +295,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -314,6 +324,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -342,6 +353,7 @@ export const BREED_REGISTRY_PRESETS: BreedRegistryProfile[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
 ];

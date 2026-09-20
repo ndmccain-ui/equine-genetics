@@ -15,6 +15,7 @@ export const DEFAULT_SIRE: HorseGenotype = {
   tobiano: ['to', 'to'],
   frameOvero: ['o', 'o'],
   flaxen: ['F', 'f'],
+  leopardComplex: ['lp', 'lp'],
 };
 
 export const DEFAULT_DAM: HorseGenotype = {
@@ -29,6 +30,7 @@ export const DEFAULT_DAM: HorseGenotype = {
   tobiano: ['to', 'to'],
   frameOvero: ['o', 'o'],
   flaxen: ['f', 'f'],        // Flaxen carrier
+  leopardComplex: ['lp', 'lp'],
 };
 
 export const COAT_VARIETY_PRESETS: HorsePreset[] = [
@@ -57,6 +59,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -83,6 +86,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['f', 'f'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -109,6 +113,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -136,6 +141,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['LP', 'lp'],
     },
   },
   {
@@ -162,6 +168,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['TO', 'TO'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -188,6 +195,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -214,6 +222,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'f'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -240,6 +249,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -267,6 +277,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -293,6 +304,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -319,6 +331,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -345,6 +358,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -371,6 +385,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['O', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
   {
@@ -397,6 +412,7 @@ export const COAT_VARIETY_PRESETS: HorsePreset[] = [
       tobiano: ['to', 'to'],
       frameOvero: ['o', 'o'],
       flaxen: ['F', 'F'],
+      leopardComplex: ['lp', 'lp'],
     },
   },
 ];

@@ -572,8 +572,8 @@ export const CoatSandbox: React.FC = () => {
                 </div>
               </div>
 
-              {/* White Patterns: Tobiano & Overo */}
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              {/* White Patterns: Tobiano, Overo, and Appaloosa Leopard Complex */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                 {/* Tobiano */}
                 <div className="p-2.5 bg-[#FAF9F5] rounded-xs border border-stone-200">
                   <span className="font-mono text-[10px] font-bold text-[#1A1A1A] block mb-1">
@@ -633,6 +633,62 @@ export const CoatSandbox: React.FC = () => {
                       title="Lethal White Overo (O/O)"
                     >
                       O/O (Lethal)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Leopard Complex (Appaloosa) */}
+                <div className="p-2.5 bg-[#FAF9F5] rounded-xs border border-stone-200">
+                  <span className="font-mono text-[10px] font-bold text-[#1A1A1A] block mb-1">
+                    Appaloosa LP (LP/lp)
+                  </span>
+                  <div className="flex gap-1 font-mono">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateLocus('leopardComplex', ['LP', 'lp']);
+                        if (appaloosaPattern === 'none') setAppaloosaPattern('leopard');
+                      }}
+                      className={`flex-1 py-1 rounded-xs text-xs font-bold border ${
+                        genotype.leopardComplex &&
+                        genotype.leopardComplex.includes('LP') &&
+                        !(genotype.leopardComplex[0] === 'LP' && genotype.leopardComplex[1] === 'LP')
+                          ? 'bg-[#8C5238] text-white border-[#8C5238]'
+                          : 'bg-white text-stone-700 border-stone-300'
+                      }`}
+                    >
+                      LP/lp
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateLocus('leopardComplex', ['LP', 'LP']);
+                        setAppaloosaPattern('fewspot');
+                      }}
+                      className={`flex-1 py-1 rounded-xs text-xs font-bold border ${
+                        genotype.leopardComplex &&
+                        genotype.leopardComplex[0] === 'LP' &&
+                        genotype.leopardComplex[1] === 'LP'
+                          ? 'bg-[#8C5238] text-white border-[#8C5238]'
+                          : 'bg-white text-stone-700 border-stone-300'
+                      }`}
+                      title="Homozygous LP/LP (Few-spot / CSNB)"
+                    >
+                      LP/LP
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateLocus('leopardComplex', ['lp', 'lp']);
+                        setAppaloosaPattern('none');
+                      }}
+                      className={`flex-1 py-1 rounded-xs text-xs font-bold border ${
+                        !genotype.leopardComplex || !genotype.leopardComplex.includes('LP')
+                          ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
+                          : 'bg-white text-stone-700 border-stone-300'
+                      }`}
+                    >
+                      lp/lp
                     </button>
                   </div>
                 </div>
@@ -796,19 +852,29 @@ export const CoatSandbox: React.FC = () => {
                     Spotted coat variations
                   </span>
                 </div>
-                <div className="grid grid-cols-4 gap-1.5 text-xs font-mono">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 text-xs font-mono">
                   {(
                     [
                       { id: 'none', label: 'None' },
                       { id: 'blanket', label: 'Croup Blanket' },
                       { id: 'leopard', label: 'Full Leopard' },
                       { id: 'fewspot', label: 'Few-Spot White' },
+                      { id: 'snowflake', label: 'Snowflake' },
                     ] as const
                   ).map(opt => (
                     <button
                       key={opt.id}
                       type="button"
-                      onClick={() => setAppaloosaPattern(opt.id)}
+                      onClick={() => {
+                        setAppaloosaPattern(opt.id);
+                        if (opt.id === 'none') {
+                          updateLocus('leopardComplex', ['lp', 'lp']);
+                        } else if (opt.id === 'fewspot') {
+                          updateLocus('leopardComplex', ['LP', 'LP']);
+                        } else {
+                          updateLocus('leopardComplex', ['LP', 'lp']);
+                        }
+                      }}
                       className={`py-1.5 px-1 rounded-xs text-center font-bold text-[11px] border ${
                         appaloosaPattern === opt.id
                           ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'

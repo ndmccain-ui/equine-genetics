@@ -6,6 +6,7 @@ import {
   PunnettGrid,
   PunnettCell,
   BaseColorCategory,
+  AppaloosaPattern,
 } from '../types/genetics';
 
 /**
@@ -27,6 +28,7 @@ export function resolvePhenotype(
     tobiano,
     frameOvero,
     flaxen,
+    leopardComplex,
   } = genotype;
 
   // Check Lethal White Overo
@@ -247,11 +249,28 @@ export function resolvePhenotype(
     else resolvedName = `${resolvedName} Roan`;
   }
 
-  // --- WHITE PATTERNS (Tobiano / Frame Overo) ---
+  // --- WHITE PATTERNS (Tobiano / Frame Overo / Appaloosa) ---
   const patternTags: string[] = [];
   if (hasTobiano && hasFrameOvero) patternTags.push('Tovero');
   else if (hasTobiano) patternTags.push('Tobiano');
   else if (hasFrameOvero) patternTags.push('Frame Overo');
+
+  // Appaloosa Leopard Complex (LP)
+  const hasLP = leopardComplex ? leopardComplex.includes('LP') : false;
+  const isLPHomozygous = Boolean(leopardComplex && leopardComplex[0] === 'LP' && leopardComplex[1] === 'LP');
+  let computedAppaloosaPattern: AppaloosaPattern = customization?.appaloosaPattern || 'none';
+
+  if (hasLP && (!customization?.appaloosaPattern || customization.appaloosaPattern === 'none')) {
+    computedAppaloosaPattern = isLPHomozygous ? 'fewspot' : 'leopard';
+  }
+
+  if (hasLP) {
+    if (computedAppaloosaPattern === 'leopard') patternTags.push('Leopard Appaloosa');
+    else if (computedAppaloosaPattern === 'fewspot') patternTags.push('Few-Spot Appaloosa');
+    else if (computedAppaloosaPattern === 'blanket') patternTags.push('Blanket Appaloosa');
+    else if (computedAppaloosaPattern === 'snowflake') patternTags.push('Snowflake Appaloosa');
+    else patternTags.push('Appaloosa');
+  }
 
   if (patternTags.length > 0) {
     resolvedName = `${resolvedName} ${patternTags.join(' ')}`;
@@ -274,7 +293,9 @@ export function resolvePhenotype(
     hasRoan,
     hasTobiano,
     hasFrameOvero,
-    isFlaxen
+    isFlaxen,
+    hasLP,
+    isLPHomozygous
   );
 
   return {
@@ -292,13 +313,13 @@ export function resolvePhenotype(
     hasTobiano,
     hasFrameOvero,
     isLethalWhite: false,
-    rarity: getRarityLevel(crCount, hasDun, hasSilver, hasChampagne, hasGrey, hasRoan, hasTobiano, hasFrameOvero),
+    rarity: getRarityLevel(crCount, hasDun, hasSilver, hasChampagne, hasGrey, hasRoan, hasTobiano, hasFrameOvero, hasLP),
     scientificFormula: formatGenotypeFormula(genotype),
     facialMarking: customization?.facialMarking || 'none',
     frontLegMarking: customization?.frontLegMarking || 'none',
     hindLegMarking: customization?.hindLegMarking || 'none',
     maneStyle: customization?.maneStyle || 'flowing',
-    appaloosaPattern: customization?.appaloosaPattern || 'none',
+    appaloosaPattern: computedAppaloosaPattern,
     hasSplashWhite: customization?.hasSplashWhite || false,
   };
 }
@@ -311,7 +332,8 @@ function getRarityLevel(
   grey: boolean,
   roan: boolean,
   tobiano: boolean,
-  overo: boolean
+  overo: boolean,
+  leopard: boolean = false
 ): 'common' | 'uncommon' | 'rare' | 'very_rare' {
   const score =
     (crCount === 2 ? 3 : crCount === 1 ? 1 : 0) +
@@ -321,7 +343,8 @@ function getRarityLevel(
     (roan ? 2 : 0) +
     (grey ? 1 : 0) +
     (tobiano ? 1 : 0) +
-    (overo ? 1 : 0);
+    (overo ? 1 : 0) +
+    (leopard ? 1 : 0);
 
   if (score >= 4) return 'very_rare';
   if (score >= 2) return 'rare';
@@ -340,7 +363,9 @@ function generatePhenotypeSummary(
   roan: boolean,
   tobiano: boolean,
   overo: boolean,
-  flaxen: boolean
+  flaxen: boolean,
+  leopard: boolean = false,
+  isLPHomozygous: boolean = false
 ): string {
   const parts: string[] = [];
 
@@ -362,6 +387,13 @@ function generatePhenotypeSummary(
   if (grey) parts.push('Dominant Grey (G_) will cause progressive depigmentation with age, turning white/flea-bitten.');
   if (tobiano) parts.push('Tobiano (TO_) produces large rounded vertical white pinto patches crossing the spine.');
   if (overo) parts.push('Frame Overo (O_) causes horizontal jagged white markings; dark legs and white facial splashes.');
+  if (leopard) {
+    parts.push(
+      isLPHomozygous
+        ? 'Homozygous Leopard Complex (LP/LP) creates few-spot/snowcap pattern with mottled skin, striped hooves, and congenital stationary night blindness (CSNB).'
+        : 'Heterozygous Leopard Complex (LP/lp) produces classic Appaloosa leopard spotted or white blanket pattern, mottled skin, and striped hooves.'
+    );
+  }
 
   return parts.join(' ');
 }
@@ -377,8 +409,9 @@ export function formatGenotypeFormula(g: HorseGenotype): string {
   const rn = g.roan.join('/');
   const to = g.tobiano.join('/');
   const ov = g.frameOvero.join('/');
+  const lp = g.leopardComplex ? g.leopardComplex.join('/') : 'lp/lp';
 
-  return `${ext} ${ag} ${cr} ${dn} ${sl} ${ch} ${gr} ${rn} ${to} ${ov}`;
+  return `${ext} ${ag} ${cr} ${dn} ${sl} ${ch} ${gr} ${rn} ${to} ${ov} ${lp}`;
 }
 
 /**
@@ -405,6 +438,7 @@ export function calculateBreedingPair(
     'tobiano',
     'frameOvero',
     'flaxen',
+    'leopardComplex',
   ];
 
   // For each locus, find all 4 possible combinations:
@@ -560,6 +594,7 @@ function sortAllelePair(pair: [string, string], locus: keyof HorseGenotype): [an
     tobiano: 'TO',
     frameOvero: 'O',
     flaxen: 'F',
+    leopardComplex: 'LP',
   };
 
   const lead = dominantFirst[locus];
@@ -624,6 +659,7 @@ export function buildSingleLocusPunnett(
     tobiano: { name: 'Tobiano Pinto Locus', symbol: 'TO/to' },
     frameOvero: { name: 'Frame Overo Locus', symbol: 'O/o' },
     flaxen: { name: 'Flaxen Mane & Tail Modifier', symbol: 'F/f' },
+    leopardComplex: { name: 'Leopard Complex (Appaloosa Spotting)', symbol: 'LP/lp' },
   };
 
   const info = locusNames[locus];
@@ -647,6 +683,8 @@ export function buildSingleLocusPunnett(
         note = code === 'Cr/Cr' ? 'Double Dilute (Blue eyes)' : code === 'Cr/N' ? 'Single Dilute (Palomino/Buckskin)' : 'Non-dilute';
       } else if (locus === 'frameOvero') {
         note = code === 'O/O' ? '⚠️ Lethal White (Non-viable)' : code === 'O/o' ? 'Frame Overo Pattern' : 'Solid';
+      } else if (locus === 'leopardComplex') {
+        note = code === 'LP/LP' ? 'Homozygous Appaloosa (Few-spot / Snowcap; CSNB)' : code === 'LP/lp' ? 'Heterozygous Appaloosa (Leopard / Blanket)' : 'Solid (lp/lp)';
       } else {
         note = `Offspring allele combination: ${code}`;
       }
@@ -706,6 +744,12 @@ function getGenotypeImpactSummary(locus: keyof HorseGenotype, genotype: string):
       return genotype === 'O/O' ? '⚠️ Lethal White Syndrome' : genotype === 'O/o' ? 'Frame Overo pinto' : 'Solid';
     case 'flaxen':
       return genotype === 'f/f' ? 'Flaxen (blonde) mane & tail on chestnut' : 'Standard mane/tail color';
+    case 'leopardComplex':
+      return genotype === 'LP/LP'
+        ? 'Homozygous Appaloosa (Few-spot / Snowcap; Congenital Stationary Night Blindness CSNB)'
+        : genotype.includes('LP')
+        ? 'Heterozygous Appaloosa (Classic Leopard spots or Croup Blanket pattern)'
+        : 'Non-appaloosa solid coat (lp/lp)';
     default:
       return genotype;
   }

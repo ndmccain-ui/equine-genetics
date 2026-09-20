@@ -284,6 +284,66 @@ export const GeneticsGuide: React.FC = () => {
         </div>
       ),
     },
+    {
+      id: 'appaloosa-leopard',
+      title: '7. The Leopard Complex (LP) & Appaloosa Patterns',
+      subtitle: 'Incomplete dominant spotting, mottled skin, striped hooves, and Congenital Stationary Night Blindness (CSNB).',
+      iconColor: 'bg-[#8C5238] text-white',
+      content: (
+        <div className="space-y-4 text-xs sm:text-sm text-stone-700 leading-relaxed">
+          <p>
+            The <strong>Leopard Complex</strong> gene (<em>LP</em>, located on equine chromosome 1) is an incomplete dominant mutation
+            in the <em>TRPM1</em> ion channel gene responsible for the iconic Appaloosa spotting patterns.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-stone-50 rounded-xs border border-stone-200">
+              <h4 className="font-bold text-stone-900 font-serif mb-1 flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#8C5238]" />
+                Heterozygous (LP / lp)
+              </h4>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                Possessing one copy of <em>LP</em> produces the classic spotted coat patterns:
+              </p>
+              <ul className="mt-2 space-y-1 text-xs text-stone-700">
+                <li>• <strong>Full Leopard:</strong> White body covered in colored spots matching the base coat.</li>
+                <li>• <strong>Croup Blanket:</strong> Symmetrical white blanket over the hips with spots.</li>
+                <li>• <strong>Snowflake:</strong> White specks scattered across dark base coat.</li>
+                <li>• <strong>Vision:</strong> Normal scotopic night vision.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 bg-stone-50 rounded-xs border border-stone-200">
+              <h4 className="font-bold text-stone-900 font-serif mb-1 flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-stone-400" />
+                Homozygous (LP / LP)
+              </h4>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                Two copies of <em>LP</em> cause suppression of spots, creating white "homozygous" patterns:
+              </p>
+              <ul className="mt-2 space-y-1 text-xs text-stone-700">
+                <li>• <strong>Few-Spot Leopard:</strong> Almost solid white coat with very few spots at flank.</li>
+                <li>• <strong>Snowcap Blanket:</strong> Solid white croup blanket with <em>no</em> dark spots.</li>
+                <li>• <strong>100% Siring Rate:</strong> Guarantees 100% spotted/LP offspring regardless of mate.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 bg-amber-50 border border-amber-300 rounded-xs space-y-2">
+            <div className="flex items-center gap-2 text-amber-900 font-bold">
+              <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
+              <span className="font-serif italic text-sm">Clinical Link: Congenital Stationary Night Blindness (CSNB)</span>
+            </div>
+            <p className="text-xs text-amber-900 leading-relaxed font-serif italic">
+              All homozygous <strong>LP/LP</strong> horses lack functional TRPM1 ion channel activity in retinal bipolar cells,
+              rendering them completely night-blind from birth (CSNB). Day vision remains normal.
+              In addition, all LP horses typically express the hallmark triad of Appaloosa characteristics: <em>mottled skin</em> around the muzzle and eyes,
+              <em>vertically striped hooves</em>, and visible <em>white sclera</em> encircling the iris.
+            </p>
+          </div>
+        </div>
+      ),
+    },
   ];
 
   const currentSection = sections.find(s => s.id === activeSection) || sections[0];

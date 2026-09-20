@@ -108,6 +108,14 @@ export const BreedingCalculator: React.FC = () => {
             <span className="w-2 h-2 rounded-full bg-slate-400 border border-stone-400" />
             Arabian (Grey Gg) × Thoroughbred (50% Greying)
           </button>
+          <button
+            type="button"
+            onClick={() => handleLoadPairing('appaloosa-leopard', 'haflinger-sorrel')}
+            className="px-3 py-1.5 rounded-sm bg-stone-50 hover:bg-stone-100 border border-stone-300 text-[11px] uppercase tracking-wider font-semibold text-[#1A1A1A] transition-colors flex items-center gap-1.5"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#8C5238] border border-stone-400" />
+            Appaloosa (LP/lp) × Haflinger (50% Spotted Foals)
+          </button>
         </div>
       </div>
 
@@ -400,6 +408,7 @@ function formatGenotypeCompact(g: HorseGenotype): string {
   if (g.tobiano.includes('TO')) parts.push(g.tobiano.join('/'));
   if (g.frameOvero.includes('O')) parts.push(g.frameOvero.join('/'));
   if (g.flaxen.includes('f')) parts.push(g.flaxen.join('/'));
+  if (g.leopardComplex && g.leopardComplex.includes('LP')) parts.push(g.leopardComplex.join('/'));
   return parts.join(' ');
 }
 
@@ -849,8 +858,8 @@ const ParentCard: React.FC<ParentCardProps> = ({
                 </div>
 
                 {/* Flaxen */}
-                <div className="p-2 bg-white rounded-xs border border-stone-200 flex items-center justify-between col-span-2">
-                  <span className="text-[11px] font-medium text-[#1A1A1A]">Flaxen (f/f mane lightener)</span>
+                <div className="p-2 bg-white rounded-xs border border-stone-200 flex items-center justify-between">
+                  <span className="text-[11px] font-medium text-[#1A1A1A]">Flaxen (f/f)</span>
                   <div className="flex gap-1 font-mono font-bold">
                     <button
                       type="button"
@@ -869,6 +878,45 @@ const ParentCard: React.FC<ParentCardProps> = ({
                       }`}
                     >
                       {genotype.flaxen[1]}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Leopard Complex (LP/lp) - Appaloosa */}
+                <div className="p-2 bg-white rounded-xs border border-stone-200 flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <span className="text-[11px] font-medium text-[#1A1A1A]">Appaloosa LP</span>
+                    <button
+                      type="button"
+                      onClick={() => onOpenPunnett('leopardComplex')}
+                      title="View Leopard Complex Punnett Square"
+                      className="text-stone-400 hover:text-stone-800"
+                    >
+                      <Dna className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                  <div className="flex gap-1 font-mono font-bold">
+                    <button
+                      type="button"
+                      onClick={() => toggleAllele('leopardComplex', 0, 'LP', 'lp')}
+                      className={`px-1.5 py-0.5 rounded-xs text-xs ${
+                        genotype.leopardComplex && genotype.leopardComplex[0] === 'LP'
+                          ? 'bg-[#8C5238] text-white font-bold'
+                          : 'bg-stone-100 text-stone-700'
+                      }`}
+                    >
+                      {genotype.leopardComplex ? genotype.leopardComplex[0] : 'lp'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleAllele('leopardComplex', 1, 'LP', 'lp')}
+                      className={`px-1.5 py-0.5 rounded-xs text-xs ${
+                        genotype.leopardComplex && genotype.leopardComplex[1] === 'LP'
+                          ? 'bg-[#8C5238] text-white font-bold'
+                          : 'bg-stone-100 text-stone-700'
+                      }`}
+                    >
+                      {genotype.leopardComplex ? genotype.leopardComplex[1] : 'lp'}
                     </button>
                   </div>
                 </div>

@@ -246,6 +246,12 @@ export const HorseSvg: React.FC<HorseSvgProps> = ({
             <circle cx="26" cy="25" r="1.8" fill={effectivePoints} fillOpacity="0.7" />
           </pattern>
 
+          {/* Appaloosa Vertically Striped Hooves Pattern */}
+          <pattern id={`stripedHoofPattern-${uniqueId}`} width="6" height="24" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="3" height="24" fill="#4B3F34" />
+            <rect x="3" y="0" width="3" height="24" fill="#DFD2BF" />
+          </pattern>
+
           {/* Ground Soft Shadow */}
           <radialGradient id={`groundShadow-${uniqueId}`} cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#292524" stopOpacity="0.22" />
@@ -287,7 +293,7 @@ export const HorseSvg: React.FC<HorseSvgProps> = ({
                 y="512"
                 width="155"
                 height="22"
-                fill={hindHoofColor}
+                fill={activeAppaloosa !== 'none' ? `url(#stripedHoofPattern-${uniqueId})` : hindHoofColor}
                 opacity={0.94}
               />
               {/* Front Hooves */}
@@ -296,7 +302,7 @@ export const HorseSvg: React.FC<HorseSvgProps> = ({
                 y="512"
                 width="135"
                 height="22"
-                fill={frontHoofColor}
+                fill={activeAppaloosa !== 'none' ? `url(#stripedHoofPattern-${uniqueId})` : frontHoofColor}
                 opacity={0.94}
               />
 
@@ -364,6 +370,32 @@ export const HorseSvg: React.FC<HorseSvgProps> = ({
                       opacity="0.96"
                     />
                   )}
+                  {activeAppaloosa === 'snowflake' && (
+                    <g id="snowflake-markings">
+                      <circle cx="530" cy="230" r="3.5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="560" cy="215" r="4.5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="590" cy="240" r="4" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="620" cy="225" r="5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="640" cy="260" r="3.5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="580" cy="275" r="4" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="550" cy="285" r="3" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="610" cy="295" r="4" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="650" cy="290" r="3.5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="670" cy="250" r="4" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="510" cy="260" r="2.5" fill="#FFFFFF" opacity="0.94" />
+                      <circle cx="480" cy="245" r="3" fill="#FFFFFF" opacity="0.9" />
+                      <circle cx="535" cy="305" r="2.5" fill="#FFFFFF" opacity="0.9" />
+                      <circle cx="630" cy="315" r="3" fill="#FFFFFF" opacity="0.9" />
+                    </g>
+                  )}
+                  {/* Appaloosa Mottled Pinkish Muzzle Skin */}
+                  <g id="appaloosa-mottled-muzzle" opacity="0.75">
+                    <circle cx="218" cy="204" r="3" fill="#F4B8B0" />
+                    <circle cx="223" cy="207" r="2.5" fill="#3D261C" />
+                    <circle cx="215" cy="209" r="2.2" fill="#F4B8B0" />
+                    <circle cx="220" cy="213" r="2.8" fill="#F4B8B0" />
+                    <circle cx="226" cy="211" r="2.4" fill="#3D261C" />
+                  </g>
                 </g>
               )}
 
@@ -548,6 +580,9 @@ export const HorseSvg: React.FC<HorseSvgProps> = ({
 
             {/* Expressive Eye Profile */}
             <g id="horse-eye">
+              {activeAppaloosa !== 'none' && (
+                <ellipse cx="267" cy="146" rx="6.5" ry="4.8" fill="#FFFFFF" opacity="0.9" />
+              )}
               <ellipse cx="267" cy="146" rx="5.5" ry="4" fill="#18181B" opacity="0.5" />
               <ellipse cx="267" cy="146" rx="3.8" ry="3" fill={effectiveEyes} />
               <ellipse cx="267" cy="146" rx="2.2" ry="1.6" fill="#0A0A0B" />

@@ -23,6 +23,7 @@ const AVAILABLE_LOCI: { id: keyof HorseGenotype; label: string; desc: string }[]
   { id: 'tobiano', label: 'Tobiano (TO/to)', desc: 'Vertical white pinto patches crossing the spine.' },
   { id: 'frameOvero', label: 'Frame Overo (O/o)', desc: 'Horizontal jagged patches; O/O is lethal white.' },
   { id: 'flaxen', label: 'Flaxen (F/f)', desc: 'Recessive modifier lightens mane/tail on chestnut base.' },
+  { id: 'leopardComplex', label: 'Leopard Complex (LP/lp)', desc: 'Appaloosa spotting patterns, mottled skin, and CSNB in LP/LP.' },
 ];
 
 export const PunnettModal: React.FC<PunnettModalProps> = ({
